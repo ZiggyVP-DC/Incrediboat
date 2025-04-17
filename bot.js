@@ -28,7 +28,7 @@ client.on('messageCreate', message => {
     if (command) {
         // Check cooldown
         const now = Date.now();
-        const cooldownAmount = Math.floor(Math.random() * (40000 - 20000 + 1)) + 20000; 
+        const cooldownAmount = Math.floor(Math.random() * (1000 - 100000 + 1)) + 10000; 
 
         if (!cooldowns.has(command.name)) {
             cooldowns.set(command.name, new Map());
@@ -44,7 +44,7 @@ client.on('messageCreate', message => {
             }
         }
         client.on('guildCreate', async (guild) => {
-        const guildCreateHandler = require('./guildCreate'); // Adjust the path as necessary
+        const guildCreateHandler = require('./guildCreate'); 
         await guildCreateHandler.execute(guild);
 });
             }
