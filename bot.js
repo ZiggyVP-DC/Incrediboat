@@ -43,12 +43,18 @@ client.on('messageCreate', message => {
                 return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command.name}\` command again.`);
             }
         }
+        client.on('guildCreate', async (guild) => {
+        const guildCreateHandler = require('./guildCreate'); // Adjust the path as necessary
+        await guildCreateHandler.execute(guild);
+});
+            }
+        }
 
-        // Set the cooldown for the user
+        // Set the cooldown
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); 
 
-        // Execute the command
+        
         command.execute(message, args);
     }
 });
