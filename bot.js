@@ -17,18 +17,21 @@ client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-        client.on('guildCreate', async (guild) => {
-        const guildCreateHandler = require('./guildCreate'); 
-        await guildCreateHandler.execute(guild);
+// Guild create event listener
+client.on('guildCreate', async (guild) => {
+    const guildCreateHandler = require('./guildCreate'); 
+    await guildCreateHandler.execute(guild);
 });
-            }
-        }
 
-        // Set the cooldown
-        timestamps.set(message.author.id, now);
-        setTimeout(() => timestamps.delete(message.author.id), cooldownAmount); 
+// Message create event listener without cooldown
+client.on('messageCreate', message => {
+    if (!message.content.startsWith('!') || message.author.bot) return;
 
-        
+    const args = message.content.slice(1).trim().split(/ +/);
+    const commandName = args.shift().toLowerCase();
+
+    const command = client.commands.get(commandName);
+    if (command) {
         command.execute(message, args);
     }
 });
