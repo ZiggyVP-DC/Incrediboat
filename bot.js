@@ -23,7 +23,6 @@ client.on('guildCreate', async (guild) => {
     await guildCreateHandler.execute(guild);
 });
 
-// Message create event listener without cooldown
 client.on('messageCreate', message => {
     if (!message.content.startsWith('!') || message.author.bot) return;
 
@@ -33,7 +32,6 @@ client.on('messageCreate', message => {
     const command = client.commands.get(commandName);
     if (command) {
         command.execute(message, args);
-    }
 });
 
 // The token used to log in. KEEP THIS PRIVATE AND ONLY SHOW IT IN YOUR LOCAL .ENV, PREFERABLY LOCKED TO ONLY THE CREATOR AND TEAM.
