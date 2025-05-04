@@ -22,7 +22,7 @@ module.exports = {
             headers: {
                 accept: 'application/json',
                 'content-type': 'application/json',
-                Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiIxMzYyMzM1OTA4MjI5MTU2MzAwIiwiaWF0IjoxNzQ0ODc2NTkxfQ.AyMtqMboxz3D5x-LaCz7bFJLqqi0o55cYJ0ST1-lrIM'
+                Authorization: 'meh I'\ll fix it later'
             },
             body: JSON.stringify({
                 name: 'Token',
